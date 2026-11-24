@@ -1,0 +1,5 @@
+show_id,name,type,language,genres,status,runtime,average_runtime,premiered,ended,rating,weight,network,web_channel,country,schedule_time,schedule_days,imdb_id,summary,is_test,validation_errors
+-4,TEST ended before premiered,,,,Ended,30.0,,2021-06-01,2019-01-01,8.0,50,,,,,,,,True,row: ended must be on or after premiered
+-3,TEST unknown status,,,,Cancelled??,45.0,,2020-03-01,,6.0,50,,,,,,,,True,"status: isin(['Ended', 'Running', 'To Be Determined', 'In Development'])"
+-1,TEST rating out of range,,,,Ended,60.0,,2015-01-01,2016-01-01,15.0,50,,,,,,,,True,"rating: in_range(0, 10)"
+-2,TEST negative runtime,,,,Running,-30.0,,2018-05-01,,7.0,50,,,,,,,,True,runtime: greater_than(0)
