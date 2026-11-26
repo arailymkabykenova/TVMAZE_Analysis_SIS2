@@ -80,6 +80,8 @@ def clean_text(df):
 
     # genres stay as "Drama|Thriller" here; the split happens later for groupby
     df["genres"] = df["genres"].fillna("").str.strip().replace("", "Unknown")
+    # missing country is kept as a value, so the row is not lost
+    df["country"] = df["country"].fillna("Unknown")
     return df
 
 
@@ -188,7 +190,7 @@ def run():
     df = add_platform(df)
     df = add_time_features(df)
     df = add_numeric_features(df)
-    report_missing(df, "Missing values after cleaning (rating, ended, network, web_channel stay empty on purpose)")
+    report_missing(df, "Still empty on purpose: ended, rating, network, web_channel, schedule_*, imdb_id")
     filter_recent_hits(df)
     by_genre, stats = genre_stats(df)
     genre_decade_pivot(by_genre, stats)
